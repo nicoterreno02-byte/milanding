@@ -4,11 +4,31 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GANÁ CON IMPERIO</title>
+  <title>Bonos y Registro — Tu Marca</title>
   <meta name="theme-color" content="#6d28d9">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="styles.css">
+
+  <!-- Meta Pixel Code -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src='https://connect.facebook.net/en_US/fbevents.js';
+    s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script');
+    fbq('init', '999904872206495');
+    fbq('track', 'PageView');
+  </script>
+  <noscript>
+    <img height="1" width="1" style="display:none"
+      src="https://www.facebook.com/tr?id=999904872206495&ev=PageView&noscript=1"/>
+  </noscript>
+  <!-- End Meta Pixel Code -->
+
   <script>
     const PHONE_INTL = "5491169784331"; // tu número: 549 + código de área + número (sin 0 ni 15)
     function goWA(){
@@ -16,6 +36,7 @@
       const msg = encodeURIComponent("Hola! Quiero crear mi usuario. Mi nombre es: " + name + " ✍️");
       const url = "https://wa.me/" + PHONE_INTL + "?text=" + msg + "&utm_source=landing&utm_medium=cta&utm_campaign=bono50";
       window.open(url, "_blank", "noopener");
+      onclick="fbq('trackCustom', 'ClickWhatsApp')"
     }
   </script>
 </head>
@@ -26,7 +47,7 @@
     <!-- HERO CARD -->
     <section class="hero">
   <div class="logo">
-    <img src="imperio.png" alt="Logo">
+    <img src="./imperio.png" alt="Logo">
   </div>
       <div class="card glass">
         <h1>🔥 PEDÍ TU BONO DE <span class="accent">BIENVENIDA</span> 🔥</h1>
@@ -34,7 +55,7 @@
         <div class="input-row">
           <input id="name" type="text" inputmode="text" placeholder="Tu nombre" aria-label="Tu nombre">
         </div>
-        <button class="btn cta" id="ctaBtn" onclick="goWA()">
+        <button class="btn cta" onclick="goWA()">
   ¡CREÁ TU USUARIO!
   <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" 
        alt="WhatsApp" 
@@ -46,24 +67,6 @@
       </div>
     </section>
 
-<!-- Meta Pixel Code -->
-<script>
-  !function(f,b,e,v,n,t,s)
-  {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;
-  t.src=v;s=b.getElementsByTagName(e)[0];
-  s.parentNode.insertBefore(t,s)}(window, document,'script',
-  'https://connect.facebook.net/en_US/fbevents.js');
-  fbq('init', '999904872206495'); 
-  fbq('track', 'PageView');
-</script>
-<noscript><img height="1" width="1" style="display:none"
-  src="https://www.facebook.com/tr?id=999904872206495&ev=PageView&noscript=1"
-/></noscript>
-<!-- End Meta Pixel Code -->
-
 <p class="note">Ruleta en vivo • Slots • Apuestas deportivas</p>
 
 
@@ -73,19 +76,19 @@
     <div class="marquee">
       <!-- PISTA 1 -->
       <div class="track">
-        <img src="image1.png" alt="Juego 1">
-        <img src="image2.png" alt="Juego 2">
-        <img src="image3.png" alt="Juego 3">
-        <img src="image4.png" alt="Juego 4">
-        <img src="image5.png" alt="Juego 5">
+        <img src="./image1.png" alt="Juego 1">
+        <img src="./image2.png" alt="Juego 2">
+        <img src="./image3.png" alt="Juego 3">
+        <img src="./image4.png" alt="Juego 4">
+        <img src="./image5.png" alt="Juego 5">
       </div>
       <!-- PISTA 2 (duplicada para loop perfecto) -->
       <div class="track">
-        <img src="image1.png" alt="Juego 1">
-        <img src="image2.png" alt="Juego 2">
-        <img src="image3.png" alt="Juego 3">
-        <img src="image4.png" alt="Juego 4">
-        <img src="image5.png" alt="Juego 5">
+        <img src="./image1.png" alt="Juego 1">
+        <img src="./image2.png" alt="Juego 2">
+        <img src="./image3.png" alt="Juego 3">
+        <img src="./image4.png" alt="Juego 4">
+        <img src="./image5.png" alt="Juego 5">
       </div>
     </div>
   </div>
@@ -96,12 +99,14 @@
     <section class="payments">
   <h3>MÉTODOS DE PAGO</h3>
   <div class="logos">
-    <img src="transferencia.png"       alt="Transferencia bancaria">
-    <img src="mercadopago.png" alt="Mercado Pago">
-    <img src="uala.png"    alt="Tarjetas de crédito/débito">
-    <img src="provincia.png"   alt="Cuenta DNI">
+    <img src="./transferencia.png"       alt="Transferencia bancaria">
+    <img src="./mercadopago.png" alt="Mercado Pago">
+    <img src="./uala.png"    alt="Tarjetas de crédito/débito">
+    <img src="./provincia.png"   alt="Cuenta DNI">
   </div>
 </section>
+
+
 
   <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
 </body>
