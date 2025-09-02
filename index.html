@@ -1,52 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Bonos y Registro — Tu Marca</title>
-  <meta name="theme-color" content="#6d28d9">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet">
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <meta name="theme-color" content="#6d28d9" />
+
+  <!-- Fuentes -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" />
+
+  <!-- Estilos -->
+  <link rel="stylesheet" href="styles.css" />
 
   <!-- Meta Pixel Code -->
   <script>
-    !function(f,b,e,v,n,t,s)
-    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-    n.queue=[];t=b.createElement(e);t.async=!0;
-    t.src=v;s=b.getElementsByTagName(e)[0];
-    s.parentNode.insertBefore(t,s)}(window, document,'script',
-    'https://connect.facebook.net/en_US/fbevents.js');
-    fbq('init', '999904872206495'); 
+    !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+    n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
+    (window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
+
+    fbq('init', '999904872206495');  // <-- tu Pixel ID
     fbq('track', 'PageView');
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=999904872206495&ev=PageView&noscript=1"
-    />
+         src="https://www.facebook.com/tr?id=999904872206495&ev=PageView&noscript=1" />
   </noscript>
   <!-- End Meta Pixel Code -->
 
+  <!-- Ping de depuración: confirma que fbq se cargó -->
   <script>
-    const PHONE_INTL = "5491141694198"; // tu número: 549 + código de área + número (sin 0 ni 15)
-    function goWA(){
-      // Disparar evento personalizado antes de ir a WhatsApp
-      try { 
-        if (window.fbq) fbq('trackCustom', 'ClickWhatsApp'); 
-      } catch(e) {}
-
-      // Dar tiempo a enviar el evento
-      setTimeout(() => {
-        const name = document.getElementById('name').value.trim() || "Cliente";
-        const msg = encodeURIComponent("Hola! Quiero crear mi usuario. Mi nombre es: " + name + " ✍️");
-        const url = "https://wa.me/" + PHONE_INTL + "?text=" + msg + "&utm_source=landing&utm_medium=cta&utm_campaign=bono50";
-        window.open(url, "_blank", "noopener");
-      }, 300);
-    }
+    window.addEventListener('load', function () {
+      if (typeof fbq === 'function') {
+        fbq('trackCustom', 'DebugPing', { t: Date.now() });
+      }
+    });
   </script>
 </head>
+
 <body>
   <div class="bg"></div>
 
@@ -56,18 +49,21 @@
       <div class="logo">
         <img src="./imperio.png" alt="Logo">
       </div>
+
       <div class="card glass">
         <h1>🔥 PEDÍ TU BONO DE <span class="accent">BIENVENIDA</span> 🔥</h1>
         <h2 class="bono">BONO DEL <span>100%</span></h2>
+
         <div class="input-row">
           <input id="name" type="text" inputmode="text" placeholder="Tu nombre" aria-label="Tu nombre">
         </div>
-        <button class="btn cta" onclick="goWA()">
+
+        <!-- CTA como <a> + tracking + retardo -->
+        <a id="ctaBtn" class="btn cta" href="#" rel="noopener">
           ¡CREÁ TU USUARIO!
-          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png" 
-               alt="WhatsApp" 
-               style="width:22px; height:22px; border-radius:4px;">
-        </button>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png"
+               alt="WhatsApp" style="width:22px;height:22px;border-radius:4px;margin-left:6px;">
+        </a>
       </div>
     </section>
 
@@ -85,7 +81,7 @@
             <img src="./image4.png" alt="Juego 4">
             <img src="./image5.png" alt="Juego 5">
           </div>
-          <!-- PISTA 2 (duplicada para loop perfecto) -->
+          <!-- PISTA 2 -->
           <div class="track">
             <img src="./image1.png" alt="Juego 1">
             <img src="./image2.png" alt="Juego 2">
@@ -97,18 +93,50 @@
       </div>
     </section>
 
-    <!-- PAYMENT METHODS -->
+    <!-- MÉTODOS DE PAGO -->
     <section class="payments">
       <h3>MÉTODOS DE PAGO</h3>
       <div class="logos">
         <img src="./transferencia.png" alt="Transferencia bancaria">
-        <img src="./mercadopago.png" alt="Mercado Pago">
-        <img src="./uala.png" alt="Tarjetas de crédito/débito">
-        <img src="./provincia.png" alt="Cuenta DNI">
+        <img src="./mercadopago.png"  alt="Mercado Pago">
+        <img src="./uala.png"         alt="Tarjetas de crédito/débito">
+        <img src="./provincia.png"    alt="Cuenta DNI">
       </div>
     </section>
   </main>
 
-  <script>document.getElementById('y').textContent = new Date().getFullYear();</script>
+  <!-- Lógica del CTA: arma el texto de WhatsApp, trackea y navega -->
+  <script>
+    // ⚠️ Reemplazá con TU número (formato internacional): 549 + área + número (sin 0 ni 15)
+    const PHONE_INTL = "5491169784331";
+
+    function buildWaUrl() {
+      const input = document.getElementById('name');
+      const name  = (input && input.value.trim()) ? input.value.trim() : 'Cliente';
+      const msg   = encodeURIComponent("Hola! Quiero crear mi usuario. Mi nombre es: " + name + " ✍️");
+      return "https://wa.me/" + PHONE_INTL + "?text=" + msg +
+             "&utm_source=landing&utm_medium=cta&utm_campaign=bono50";
+    }
+
+    document.addEventListener('DOMContentLoaded', function () {
+      const btn = document.getElementById('ctaBtn');
+      if (!btn) return;
+
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+
+        // 1) Track del clic a WhatsApp
+        try { if (window.fbq) fbq('trackCustom', 'ClickWhatsApp', { placement: 'hero' }); } catch (err) {}
+
+        // 2) Espera breve para que el hit salga y luego abrir WhatsApp
+        setTimeout(function () {
+          window.open(buildWaUrl(), '_blank', 'noopener');
+          // Si preferís en la misma pestaña:
+          // window.location.href = buildWaUrl();
+        }, 350);
+      });
+    });
+  </script>
 </body>
 </html>
+
