@@ -113,7 +113,7 @@
     function buildWaUrl() {
       const input = document.getElementById('name');
       const name  = (input && input.value.trim()) ? input.value.trim() : 'Cliente';
-      const msg   = encodeURIComponent("Hola! Quiero crear mi usuario. Mi nombre es: " + name + " ✍️");
+      const msg   = encodeURIComponent("Hola! Quiero mi bono de bienvenida. Mi nombre es: " + name + " ✍️");
       return "https://wa.me/" + PHONE_INTL + "?text=" + msg +
              "&utm_source=landing&utm_medium=cta&utm_campaign=bono50";
     }
