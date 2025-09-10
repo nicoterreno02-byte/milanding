@@ -21,12 +21,12 @@
     t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
     (window, document,'script','https://connect.facebook.net/en_US/fbevents.js');
 
-    fbq('init', '999904872206495');  // <-- tu Pixel ID
+    fbq('init', '787173757188407');  // <-- tu Pixel ID
     fbq('track', 'PageView');
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
-         src="https://www.facebook.com/tr?id=999904872206495&ev=PageView&noscript=1" />
+         src="https://www.facebook.com/tr?id=787173757188407&ev=PageView&noscript=1" />
   </noscript>
   <!-- End Meta Pixel Code -->
 
@@ -52,7 +52,7 @@
 
       <div class="card glass">
         <h1>🔥 PEDÍ TU BONO DE <span class="accent">BIENVENIDA</span> 🔥</h1>
-        <h2 class="bono">BONO DEL <span>100%</span></h2>
+        <h2 class="bono">BONO DEL <span>30%</span></h2>
 
         <div class="input-row">
           <input id="name" type="text" inputmode="text" placeholder="Tu nombre" aria-label="Tu nombre">
@@ -113,7 +113,7 @@
     function buildWaUrl() {
       const input = document.getElementById('name');
       const name  = (input && input.value.trim()) ? input.value.trim() : 'Cliente';
-      const msg   = encodeURIComponent("Hola! Quiero mi bono de bienvenida. Mi nombre es: " + name + " ✍️");
+      const msg   = encodeURIComponent("Buenas! Quiero crear un usuario. Mi nombre es: " + name + " ✍️");
       return "https://wa.me/" + PHONE_INTL + "?text=" + msg +
              "&utm_source=landing&utm_medium=cta&utm_campaign=bono50";
     }
