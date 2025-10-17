@@ -51,7 +51,7 @@
       </div>
 
       <div class="card glass">
-        <h1>🔥 EMPEZÁ A <span class="accent">GANAR YA!</span> 🔥</h1>
+        <h1>🔥 PEDÍ TU BONO DE <span class="accent">BIENVENIDA</span> 🔥</h1>
         <h2 class="bono">BONO DEL <span>30%</span></h2>
 
         <div class="input-row">
@@ -108,12 +108,12 @@
   <!-- Lógica del CTA: arma el texto de WhatsApp, trackea y navega -->
   <script>
     // ⚠️ Reemplazá con TU número (formato internacional): 549 + área + número (sin 0 ni 15)
-    const PHONE_INTL = "5491141694198";
+    const PHONE_INTL = "5491125920016";
 
     function buildWaUrl() {
       const input = document.getElementById('name');
       const name  = (input && input.value.trim()) ? input.value.trim() : 'Cliente';
-      const msg   = encodeURIComponent("Buenas! Quiero crear un usuario. Mi nombre es: " + name + " ✍️");
+      const msg   = encodeURIComponent("Hola! Quiero crear mi usuario. Mi nombre es: " + name + " ✍️");
       return "https://wa.me/" + PHONE_INTL + "?text=" + msg +
              "&utm_source=landing&utm_medium=cta&utm_campaign=bono50";
     }
