@@ -6,14 +6,11 @@
   <title>GANA CON IMPERIO</title>
   <meta name="theme-color" content="#6d28d9" />
 
-  <!-- Fuentes -->
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;800&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" />
 
-  <!-- Estilos -->
   <link rel="stylesheet" href="styles.css" />
 
-  <!-- Meta Pixel Code -->
   <script>
     !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
     n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
@@ -26,11 +23,8 @@
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
-         src="https://www.facebook.com/tr?id=999904872206495&ev=PageView&noscript=1" />
+          src="https://www.facebook.com/tr?id=999904872206495&ev=PageView&noscript=1" />
   </noscript>
-  <!-- End Meta Pixel Code -->
-
-  <!-- Ping de depuración: confirma que fbq se cargó -->
   <script>
     window.addEventListener('load', function () {
       if (typeof fbq === 'function') {
@@ -44,7 +38,6 @@
   <div class="bg"></div>
 
   <main>
-    <!-- HERO CARD -->
     <section class="hero">
       <div class="logo">
         <img src="./imperio.png" alt="Logo">
@@ -58,22 +51,19 @@
           <input id="name" type="text" inputmode="text" placeholder="Tu nombre" aria-label="Tu nombre">
         </div>
 
-        <!-- CTA como <a> + tracking + retardo -->
         <a id="ctaBtn" class="btn cta" href="#" rel="noopener">
           ¡CREÁ TU USUARIO!
           <img src="https://upload.wikimedia.org/wikipedia/commons/5/5e/WhatsApp_icon.png"
-               alt="WhatsApp" style="width:22px;height:22px;border-radius:4px;margin-left:6px;">
+                alt="WhatsApp" style="width:22px;height:22px;border-radius:4px;margin-left:6px;">
         </a>
       </div>
     </section>
 
     <p class="note">Ruleta en vivo • Slots • Apuestas deportivas</p>
 
-    <!-- Fila de juegos con auto-scroll -->
     <section class="games">
       <div class="rail glass">
         <div class="marquee">
-          <!-- PISTA 1 -->
           <div class="track">
             <img src="./image1.png" alt="Juego 1">
             <img src="./image2.png" alt="Juego 2">
@@ -81,7 +71,6 @@
             <img src="./image4.png" alt="Juego 4">
             <img src="./image5.png" alt="Juego 5">
           </div>
-          <!-- PISTA 2 -->
           <div class="track">
             <img src="./image1.png" alt="Juego 1">
             <img src="./image2.png" alt="Juego 2">
@@ -93,7 +82,6 @@
       </div>
     </section>
 
-    <!-- MÉTODOS DE PAGO -->
     <section class="payments">
       <h3>MÉTODOS DE PAGO</h3>
       <div class="logos">
@@ -105,7 +93,6 @@
     </section>
   </main>
 
-  <!-- Lógica del CTA: arma el texto de WhatsApp, trackea y navega -->
   <script>
     // ⚠️ Reemplazá con TU número (formato internacional): 549 + área + número (sin 0 ni 15)
     const PHONE_INTL = "5491141694198";
@@ -125,18 +112,26 @@
       btn.addEventListener('click', function (e) {
         e.preventDefault();
 
-        // 1) Track del clic a WhatsApp
-        try { if (window.fbq) fbq('trackCustom', 'ClickWhatsApp', { placement: 'hero' }); } catch (err) {}
+        // 1) Track del clic a WhatsApp como evento estándar 'Lead'
+        try {
+          if (window.fbq) {
+            // 🔥 CAMBIO CLAVE: Ahora rastreamos como un evento estándar 'Lead' (Cliente Potencial)
+            fbq('track', 'Lead', {
+              content_name: 'Bono 30% - Click WhatsApp',
+              value: 1.00, // Valor opcional para esta conversión
+              currency: 'USD'
+            });
+          }
+        } catch (err) {
+          console.error("Error al disparar el evento de Meta:", err);
+        }
 
         // 2) Espera breve para que el hit salga y luego abrir WhatsApp
         setTimeout(function () {
           window.open(buildWaUrl(), '_blank', 'noopener');
-          // Si preferís en la misma pestaña:
-          // window.location.href = buildWaUrl();
         }, 350);
       });
     });
   </script>
 </body>
 </html>
-
